@@ -41,12 +41,14 @@ public class ServletPool extends HttpServlet {
         double plt2 = Double.parseDouble(req.getParameter("floorTile"));
         double costFloor = (lengthFloor * widthFloor) * plt2;
 
-        String[] addition = req.getParameterValues("add");
-        double[] numbers = Arrays.stream(addition)
-                .mapToDouble(Double::parseDouble).toArray();
         double xxx = 0;
-        for (double in : numbers) {
-            xxx += in;
+        if (req.getParameterValues("add") != null) {
+            String[] addition = req.getParameterValues("add");
+            double[] numbers = Arrays.stream(addition)
+                    .mapToDouble(Double::parseDouble).toArray();
+            for (double in : numbers) {
+                xxx += in;
+            }
         }
 
         double sum = costWall + costFloor + xxx;
