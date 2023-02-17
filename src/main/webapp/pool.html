@@ -26,26 +26,26 @@
     </style>
 </head>
 <body>
-<form action="https://renovate.top/pool" method="post">
+<form action="http://localhost:8080/calculator_war_exploded/pool" method="post">
 
     <h3>Плитка настенная</h3>
 
-    <p>Длинна стены А, м</p>
+    <p>Длина стены А, м</p>
     <p><label>
         <input type="text" name="lengthWallA" required pattern="\d+(\.\d{1}{2})?"
                   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
     </label></p>
-    <p>Длинна стены В, м</p>
+    <p>Длина стены В, м</p>
     <p><label>
         <input type="text" name="lengthWallB" required pattern="\d+(\.\d{1}{2})?"
                   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
     </label></p>
-    <p>Длинна стены С, м</p>
+    <p>Длина стены С, м</p>
     <p><label>
         <input type="text" name="lengthWallC" required pattern="^\d+(\.\d{1}{2})?"
                   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
     </label></p>
-    <p>Длинна стены D, м</p>
+    <p>Длина стены D, м</p>
     <p><label>
         <input type="text" name="lengthWallD" required pattern="^\d+(\.\d{1}{2})?"
                   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
@@ -55,7 +55,7 @@
         <input type="text" name="heightRoom" required pattern="\d+(\.\d{1}{2})?"
                   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
     </label></p>
-    <p>Дизайн</p>
+    <p>Тип настенной плитки</p>
     <p>
         <label>
             <select name="wallTiles">
@@ -69,7 +69,7 @@
 
     <h3>Плитка напольная</h3>
 
-    <p>Длинна пола, м</p>
+    <p>Длина пола, м</p>
     <p><label>
         <input type="text" name="lengthFloor" required pattern="\d+(\.\d{1}{2})?"
                   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
@@ -79,7 +79,7 @@
         <input type="text" name="widthFloor" required pattern="\d+(\.\d{1}{2})?"
                   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
     </label></p>
-    <p>Дизайн</p>
+    <p>Тип напольной плитки</p>
     <p>
         <label>
             <select name="floorTile">
