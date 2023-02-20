@@ -7,6 +7,7 @@
         h3 {
             font-family: Arial, serif;
         }
+
         p {
             display: flex;
             padding-left: 10%;
@@ -40,7 +41,7 @@
 <form action="http://localhost:8080/calculator_war_exploded/pool" method="post">
     <div>
         <h3>Плитка настенная</h3>
-        
+
         Длина стены А, м<br>
         <label>
             <input type="text" name="lengthWallA" required pattern="\d+(\.\d{1}{2})?"
@@ -66,7 +67,7 @@
             <input type="text" name="heightRoom" required pattern="\d+(\.\d{1}{2})?"
                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
         </label><br>
-        
+
         Тип настенной плитки<br>
         <label>
             <select name="wallTiles">
@@ -89,6 +90,8 @@
             <input type="text" name="widthFloor" required pattern="\d+(\.\d{1}{2})?"
                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
         </label><br>
+
+        Тип напольной плитки<br>
         <label>
             <select name="floorTiles">
                 <option value="Flock">Флок</option>
