@@ -32,13 +32,11 @@ public class PoolBdImpl implements PoolBd {
 
                 wall = rs.getDouble("coust");
 
-
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
 
         return wall;
     }
@@ -84,12 +82,10 @@ public class PoolBdImpl implements PoolBd {
                 while (rs.next()) {
 
                     double plm = rs.getDouble("coust");
-
                     plumbing += plm;
 
                 }
             }
-
 
         } catch (SQLException e) {
             e.printStackTrace();

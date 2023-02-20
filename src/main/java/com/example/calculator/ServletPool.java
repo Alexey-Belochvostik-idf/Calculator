@@ -57,7 +57,6 @@ public class ServletPool extends HttpServlet {
         }else{
             additional = 0;
         }
-
         double sum = costWall + costFloor + additional;
         DecimalFormat df = new DecimalFormat("#.##");
         df.setRoundingMode(RoundingMode.FLOOR);
