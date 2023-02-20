@@ -1,5 +1,8 @@
 package com.example.calculator;
 
+import com.example.calculator.servicedb.PoolBd;
+import com.example.calculator.servicedb.PoolBdImpl;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.util.Arrays;
+
 
 @WebServlet("/pool")
 public class ServletPool extends HttpServlet {
+
+    private final PoolBd poolBd = new PoolBdImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -32,26 +37,27 @@ public class ServletPool extends HttpServlet {
         double lengthWallC = Double.parseDouble(req.getParameter("lengthWallC"));
         double lengthWallD = Double.parseDouble(req.getParameter("lengthWallD"));
         double heightRoom = Double.parseDouble(req.getParameter("heightRoom"));
-        double plt1 = Double.parseDouble(req.getParameter("wallTiles"));
+        String wallTiles = req.getParameter("wallTiles");
+        double wallTilesNew = poolBd.wallTilesBd(wallTiles);
+
         double squareWall = (lengthWallA + lengthWallB + lengthWallC + lengthWallD) * heightRoom;
-        double costWall = squareWall * plt1;
+        double costWall = squareWall * wallTilesNew;
 
         double lengthFloor = Double.parseDouble(req.getParameter("lengthFloor"));
         double widthFloor = Double.parseDouble(req.getParameter("widthFloor"));
-        double plt2 = Double.parseDouble(req.getParameter("floorTile"));
-        double costFloor = (lengthFloor * widthFloor) * plt2;
+        String floorTiles = req.getParameter("floorTiles");
 
-        double xxx = 0;
+        double floorTilesNew = poolBd.floorTilesBd(floorTiles);
+        double costFloor = (lengthFloor * widthFloor) * floorTilesNew;
+
+        double additional;
         if (req.getParameterValues("add") != null) {
             String[] addition = req.getParameterValues("add");
-            double[] numbers = Arrays.stream(addition)
-                    .mapToDouble(Double::parseDouble).toArray();
-            for (double in : numbers) {
-                xxx += in;
-            }
+           additional = poolBd.plumbing(addition);
+        }else{
+            additional = 0;
         }
-
-        double sum = costWall + costFloor + xxx;
+        double sum = costWall + costFloor + additional;
         DecimalFormat df = new DecimalFormat("#.##");
         df.setRoundingMode(RoundingMode.FLOOR);
         String roundOff = df.format(sum);
